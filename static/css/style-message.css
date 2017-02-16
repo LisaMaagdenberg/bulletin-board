@@ -1,0 +1,56 @@
+#newMessageForm {
+	margin-top: 100px;
+}
+
+@font-face {
+	font-family: Podriq;
+	src: url("../Podriq.otf") format("opentype");
+}
+
+body {
+	font-family: Podriq;
+	color: #f57f17;
+	background-image: url("../img/flamingo.png");
+	background-position: left 20px bottom 10px;
+	background-repeat: no-repeat;
+	background-size: 350px auto;
+}
+
+#title {
+	font-size: 20px;
+}
+
+#messagebox {
+	font-size: 20px;
+}
+
+/* colors for the form*/
+/* label color */
+.input-field label {
+	color: #000;
+}
+/* label focus color */
+.input-field input[type=text]:focus + label {
+	color: #000;
+}
+/* underline focus color */
+.input-field input[type=text]:focus {
+	border-bottom: 1px solid #000;
+	box-shadow: 0 1px 0 0 #000;
+}
+/* textarea focus color */
+textarea.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid #000;
+	box-shadow: 0 1px 0 0 #000;
+}
+/* label textarea focus color*/
+textarea.materialize-textarea:focus:not([readonly])+label {
+color: #000;
+}
+
+a {
+	font-size: 20px;
+}
+a:hover {
+	font-size: 20px;
+}

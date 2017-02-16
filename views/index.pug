@@ -1,0 +1,29 @@
+html
+	head
+		title Random Animal Facts Message Board - Make a message
+		link(href='http://fonts.googleapis.com/icon?family=Material+Icons', rel='stylesheet')
+		link(type='text/css', rel='stylesheet', href='css/materialize.min.css', media='screen,projection')
+		link(type="text/css" rel="stylesheet", href="css/style-index.css")
+		meta(name='viewport', content='width=device-width, initial-scale=1.0')
+	body
+		nav.yellow.darken-2
+			div.brand-logo.center
+				ul
+					li.yellow.darken-2
+						a.grey-text.text-darken-3(href="/") Post a Random Animal Fact!
+					li.yellow.darken-2
+						a.grey-text.text-darken-3(href="/messageboard") Look at all the Random Animal Facts!
+		div.container
+			div.row
+				form#newMessageForm.col.s12(action="/messageboard" method="post")
+					div.row
+						div.input-field.col.s5
+							input#title(type="text" name="title")
+							label(for="title") Title
+					div.row
+						div.input-field.col.s8
+							textarea#messagebox.materialize-textarea(name="message")
+							label(for='messagebox') Your Random Animal Fact
+					button.btn.yellow.darken-4(type="submit" name="send") Post your message
+		script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
+		script(type='text/javascript', src='js/materialize.min.js')
