@@ -9,16 +9,33 @@
 
 body {
 	font-family: Podriq;
-	color: #f57f17;
 	background-image: url("../img/flamingo.png");
 	background-position: left 20px bottom 10px;
 	background-repeat: no-repeat;
 	background-size: 350px auto;
+	background-attachment: fixed
 }
 
 a {
 	font-size: 20px;
 }
 a:hover {
+	font-size: 20px;
+}
+
+.box {
+/*	background-color: #fce4ec;*/
+	margin-left: 35%;
+	color: #c51162;
+	padding: 1px;
+	margin-bottom: 10px;
+	border-bottom: 2px solid #f8bbd0;
+}
+
+.custom {
+	margin-top: 60px;
+}
+
+p {
 	font-size: 20px;
 }

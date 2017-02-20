@@ -13,7 +13,10 @@ html
 						a.grey-text.text-darken-3(href="/") Post a Random Animal Fact!
 					li.pink.accent-1
 						a.grey-text.text-darken-3(href="/messageboard") Look at all the Random Animal Facts!
-		div.container
-			
+		div.container.custom
+			each item in allTheMessages
+				div.box
+					h3 #{item.title}
+					p #{item.body}
 		script(type='text/javascript', src='https://code.jquery.com/jquery-2.1.1.min.js')
 		script(type='text/javascript', src='js/materialize.min.js')

@@ -5,8 +5,11 @@ const connectionString = 'postgres://' +
 	process.env.POSTGRES_PASSWORD + '@localhost/bulletinboard';
 const Sequelize = require('sequelize')
 const sequelize = new Sequelize(connectionString)
+const bodyParser = require('body-parser');
 
 app.use(express.static('static'));
+app.use(bodyParser.urlencoded({extended: true}));  
+app.use(bodyParser.json());
 app.set('views', './views');
 app.set('view engine', 'pug');
 
@@ -14,11 +17,6 @@ app.set('view engine', 'pug');
 var Message = sequelize.define('message', {
 	title: Sequelize.STRING,
 	body: Sequelize.STRING
-});
-
-Message.create({
-	title: 'testtest',
-	body: 'fjklaj gjrganv ajoi rhg vawkhfoiawjev nkl.'
 });
 
 //get home '/' page
@@ -30,33 +28,31 @@ app.get('/', (req, res) => {
 app.get('/messageboard', (req, res) => {
 	Message.findAll()
 	.then(function(result){
-		res.render('message', result)
+		// console.log(result[0].dataValues)
+		var titlesAndBodies = []
+		// console.log(result) 		--> is een array met verschillende objecten
+		for (var i = result.length - 1; i >= 0; i--) {
+			titlesAndBodies.push({title:result[i].dataValues.title, body:result[i].dataValues.body})
+		}
+		console.log(titlesAndBodies)
+		const allMessages = {allTheMessages: titlesAndBodies}
+		console.log(allMessages)
+		res.render('message', allMessages)
 	})
-	// pg.connect(connectionString, (err, client, done) => {
-	// 	client.query(`select title, body from messages order by id desc`, (err, result) => {
-	// 		console.log(`${result.rowCount}`);
-	// 		var titles = []
-	// 		var bodies = []
-	// 		for (var i = 0; i < result.rowCount; i++) {
-	// 			console.log(`the title of ${i+1} is ${result.rows[i].title}`)
-	// 			titles.push(result.rows[i].title)
-	// 			console.log(`the body of ${i+1} is ${result.rows[i].body}`)
-	// 			bodies.push(result.rows[i].body)
-	// 		}
-	// 		console.log(titles)
-	// 		console.log(bodies)
-	// 		var showMessageTitle = {allTitles:titles}
-	// 		var showMessageBody = {allBodies:bodies}
-	// 		done();
-	// 		pg.end();
-	// 		res.render('message', showMessageTitle);
-	// 	})
-	// })
-	
+})
+
+app.post('/messageboard', (req, res) => {
+	Message.create({
+		title: req.body.title,
+		body: req.body.message
+	})
+	.then(function(){
+		res.redirect('/messageboard')
+	})
 })
 
 //server
-sequelize.sync({force: true})
+sequelize.sync()
 	.then(function(){
 		app.listen(3000, () => {
 			console.log('server has started');
