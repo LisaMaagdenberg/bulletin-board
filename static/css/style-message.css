@@ -16,38 +16,6 @@ body {
 	background-size: 350px auto;
 }
 
-#title {
-	font-size: 20px;
-}
-
-#messagebox {
-	font-size: 20px;
-}
-
-/* colors for the form*/
-/* label color */
-.input-field label {
-	color: #000;
-}
-/* label focus color */
-.input-field input[type=text]:focus + label {
-	color: #000;
-}
-/* underline focus color */
-.input-field input[type=text]:focus {
-	border-bottom: 1px solid #000;
-	box-shadow: 0 1px 0 0 #000;
-}
-/* textarea focus color */
-textarea.materialize-textarea:focus:not([readonly]) {
-	border-bottom: 1px solid #000;
-	box-shadow: 0 1px 0 0 #000;
-}
-/* label textarea focus color*/
-textarea.materialize-textarea:focus:not([readonly])+label {
-color: #000;
-}
-
 a {
 	font-size: 20px;
 }
