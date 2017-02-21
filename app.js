@@ -28,15 +28,7 @@ app.get('/', (req, res) => {
 app.get('/messageboard', (req, res) => {
 	Message.findAll()
 	.then(function(result){
-		// console.log(result[0].dataValues)
-		var titlesAndBodies = []
-		// console.log(result) 		--> is een array met verschillende objecten
-		for (var i = result.length - 1; i >= 0; i--) {
-			titlesAndBodies.push({title:result[i].dataValues.title, body:result[i].dataValues.body})
-		}
-		console.log(titlesAndBodies)
-		const allMessages = {allTheMessages: titlesAndBodies}
-		console.log(allMessages)
+		const allMessages = {allTheMessages: result}
 		res.render('message', allMessages)
 	})
 })
